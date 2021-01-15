@@ -32,6 +32,10 @@ urule.Condition.prototype.getDisplayContainer=function(){
 	return container;
 };
 urule.Condition.prototype.toXml=function(){
+	if (!this.operator) {
+		throw '请选择类型!'
+		return
+	}
 	var xml="<condition op=\""+this.operator.getOperator()+"\">";
 	if(this.inputType){
 		xml+=this.inputType.toXml();

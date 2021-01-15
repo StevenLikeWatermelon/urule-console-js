@@ -32,12 +32,6 @@ Remark.prototype.init=function (container) {
         }else{
             _this.remarkLabel.html(_this.parseBreak(_this.remark));
         }
-        if(window.setDirty){
-            window.setDirty();
-        }
-        if(window._setDirty){
-            window._setDirty();
-        }
     });
     this.remarkEditor.blur(function () {
         _this.remarkEditor.hide();

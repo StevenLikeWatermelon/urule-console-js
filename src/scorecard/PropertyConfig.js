@@ -18,7 +18,7 @@ export default class PropertyConfig{
         this.namePropertyContainer.append(this.nameEditor);
         this.nameEditor.change(function () {
             self.name=$(this).val();
-            window._setDirty();
+            
         });
 
         this.propertyContainer=$("<span>");
@@ -90,7 +90,7 @@ export default class PropertyConfig{
     addProperty(property){
         this.propertyContainer.append(property.getContainer());
         this.properties.push(property);
-        window._setDirty();
+        
     }
     toXml(){
         if(!this.name || this.name.length<1){

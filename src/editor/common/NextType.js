@@ -17,7 +17,6 @@ urule.NextType=function(rule){
 	var onClick=function(menu){
 		var type=menu.name;
 		self.doNext(type);
-		window._setDirty();
 	};
 	self.menu=new URule.menu.Menu({
 		menuItems:[{

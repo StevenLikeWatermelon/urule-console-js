@@ -25,7 +25,6 @@ urule.ConstantValue.prototype.setValue=function(data){
 	this.constantName=data["constantName"];
 	this.constantLabel=data["constantLabel"];
 	URule.setDomContent(this.label,this.category+"."+this.constantLabel);
-	window._setDirty();
 };
 
 urule.ConstantValue.prototype.initMenu=function(constantLibraries){

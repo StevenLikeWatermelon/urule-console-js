@@ -43,7 +43,7 @@ urule.ConditionLeft.prototype.initMenu=function(constantLibraries){
 					"color":"white"
 				});
 				URule.setDomContent(self.label,".");
-				window._setDirty();
+				
 			}
 		},{
 			label:"选择参数",
@@ -68,7 +68,7 @@ urule.ConditionLeft.prototype.initMenu=function(constantLibraries){
 					"color":"white"
 				});
 				URule.setDomContent(self.label,".");
-				window._setDirty();
+				
 			}
 		},{
 			label:"选择方法",
@@ -93,7 +93,7 @@ urule.ConditionLeft.prototype.initMenu=function(constantLibraries){
 					"color":"white"
 				});
 				URule.setDomContent(self.label,".");
-				window._setDirty();
+				
 			}
 		},{
 			label:"选择函数",
@@ -118,7 +118,7 @@ urule.ConditionLeft.prototype.initMenu=function(constantLibraries){
 					"color":"white"
 				});
 				URule.setDomContent(self.label,".");
-				window._setDirty();
+				
 			}
 		}]
 	});

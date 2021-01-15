@@ -81,7 +81,6 @@ function buildScriptLintFunction(type){
 function init(){
     var height=$(document).height()-60;
     codeMirror.setSize("100%",height);
-    window._dirty=false;
     var file=getParameter("file");
     if(!file || file.length<1){
         alert("当前编辑器未指定具体文件！");
@@ -164,7 +163,6 @@ function init(){
         });
     });
 
-    window._dirty=false;
     var url=window._server+'/uleditor/loadUL';
     $.ajax({
         url:url,
@@ -177,9 +175,6 @@ function init(){
             codeMirror.setValue(data);
             $("#saveButton").addClass("disabled");
             $("#saveButtonNewVersion").addClass("disabled");
-            codeMirror.on("change",function(){
-                setDirty();
-            });
             loadResLib();
         }
     });
@@ -224,34 +219,12 @@ function save(file,newVersion){
             }
             postData.versionComment=versionComment;
             ajaxSave(url,postData,function () {
-                cancelDirty();
+                
             })
         });
     }else{
         ajaxSave(url,postData,function () {
-            cancelDirty();
+            
         })
     }
-};
-
-function setDirty(){
-    if(window._dirty){
-        return;
-    }
-    window._dirty=true;
-    $("#saveButton").html("<i class='rf rf-save'></i> *保存");
-    $("#saveButton").removeClass("disabled");
-    $("#saveButtonNewVersion").html("<i class='rf rf-savenewversion'></i> *保存新版本");
-    $("#saveButtonNewVersion").removeClass("disabled");
-};
-
-function cancelDirty(){
-    if(!window._dirty){
-        return;
-    }
-    window._dirty=false;
-    $("#saveButton").html("<i class='rf rf-save'></i> 保存");
-    $("#saveButton").addClass("disabled");
-    $("#saveButtonNewVersion").html("<i class='rf rf-savenewversion'></i> 保存新版本");
-    $("#saveButtonNewVersion").addClass("disabled");
 };

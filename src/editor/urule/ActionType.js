@@ -125,7 +125,7 @@ urule.ActionType.prototype.initDefaultMenuData=function(){
 };
 
 urule.ActionType.prototype.setAction=function(type,data){
-	window._setDirty();
+	
 	if(this.action){
 		this.action.getContainer().remove();
 	}

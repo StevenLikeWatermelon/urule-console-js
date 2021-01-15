@@ -49,9 +49,16 @@ import './Condition.js';
 import './Rule.js';
 import './LoopRule.js';
 
-import KnowledgeTreeDialog from '../../components/dialog/component/KnowledgeTreeDialog.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+var Home = React.createClass({
+    render: function(){
+        return(
+            <div> 规则策略 </div>
+        )
+    }
+});
 
 $(document).ready(function () {
     const container=$('#container');
@@ -59,7 +66,7 @@ $(document).ready(function () {
     const dialogContainer=$('<div>');
     container.append(dialogContainer);
     ReactDOM.render(
-        <KnowledgeTreeDialog/>,
+        <Home />,
         dialogContainer[0]
     );
 });

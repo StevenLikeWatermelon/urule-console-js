@@ -112,28 +112,6 @@ $(document).ready(function (e) {
     const saveVersionButton=$(`<button type="button" class="btn btn-default disabled"><i class="rf rf-savenewversion"></i> 保存新版本</button>`);
     saveGroup.append(saveVersionButton);
 
-    window._setDirty=function(){
-        if(self._dirty){
-            return;
-        }
-        self._dirty=true;
-        saveButton.html("<i class='rf rf-save'></i> *保存");
-        saveButton.removeClass("disabled");
-        saveVersionButton.html("<i class='rf rf-savenewversion'></i> *保存新版本");
-        saveVersionButton.removeClass("disabled");
-    };
-
-    function cancelDirty(){
-        if(!self._dirty){
-            return;
-        }
-        self._dirty=false;
-        saveButton.html("<i class='rf rf-save'></i> 保存");
-        saveButton.addClass("disabled");
-        saveVersionButton.html("<i class='rf rf-savenewversion'></i> 保存新版本");
-        saveVersionButton.addClass("disabled");
-    };
-
     addAttributeButton.click(function () {
         cardTable.addAttributeRow();
     });
@@ -155,13 +133,13 @@ $(document).ready(function (e) {
                         return;
                     }
                     ajaxSave(url,{content,file,newVersion,versionComment},function () {
-                        cancelDirty();
+                        
                     });
 
                 });
             }else{
                 ajaxSave(url,{content,file,newVersion},function () {
-                    cancelDirty();
+                    
                 });
             }
         }catch(error){
@@ -213,7 +191,7 @@ $(document).ready(function (e) {
                     refreshParameterLibraries();
                     refreshFunctionLibraries();
                 }
-                cancelDirty();
+                
             }
         },
         error:function () {

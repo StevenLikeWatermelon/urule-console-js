@@ -89,7 +89,6 @@ urule.FunctionValue.prototype.initData=function(data){
 };
 
 urule.FunctionValue.prototype.setFunction=function(data){
-	window._setDirty();
 	this.functionContainer.empty();
 	URule.setDomContent(this.label,data.label);
 	this.functionContainer.append(this.leftParn);

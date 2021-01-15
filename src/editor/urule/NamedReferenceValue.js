@@ -58,7 +58,7 @@ urule.NamedReferenceValue.prototype.initMenu=function(){
 				var category=self.rule.namedMap.get(name) || {};
 				var variables=category.variables || [];
 				self.initPropertyMenu(variables);
-				window._setDirty();
+				
 			}
 		});
 	}
@@ -89,7 +89,7 @@ urule.NamedReferenceValue.prototype.initPropertyMenu=function(variables){
 				self.propertyLabel=variable.label;
 				self.datatype=variable.type;
 				URule.setDomContent(self.referencePropertylabel,self.propertyLabel);
-				window._setDirty();
+				
 			}
 		});
 	}
@@ -110,7 +110,7 @@ urule.NamedReferenceValue.prototype.setValue=function(data){
 	this.datatype=data["datatype"];
 	URule.setDomContent(this.referenceNamelabel,this.referenceName+".");
 	URule.setDomContent(this.referencePropertylabel,this.propertyLabel);
-	window._setDirty();
+	
 };
 urule.NamedReferenceValue.prototype.initData=function(data){
 	this.setValue(data);

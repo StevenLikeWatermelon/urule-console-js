@@ -49,7 +49,7 @@ export default class ActionNode extends BaseNode{
         if(notfirst){
             actionContainer.css("display","block");
         }
-        window._setDirty();
+        
         var delIcon=$("<i class='glyphicon glyphicon-minus-sign' style='color: #ac2925;padding-right: 5px'></i>");
         actionContainer.append(delIcon);
         this.actionsContainer.append(actionContainer);
@@ -72,7 +72,7 @@ export default class ActionNode extends BaseNode{
             if(pos!==-1){
                 self.actionTypes.splice(pos,1);
                 actionContainer.remove();
-                window._setDirty();
+                
             }else{
                 MsgBox.alert("未找到要删除的动作对象.");
             }

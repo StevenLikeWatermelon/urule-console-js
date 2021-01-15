@@ -4,25 +4,25 @@
 var webpack = require('webpack');
 module.exports = {
     entry: {
-        frame:'./src/frame/index.jsx',
-        variableEditor:'./src/variable/index.jsx',
-        constantEditor:'./src/constant/index.jsx',
-        parameterEditor:'./src/parameter/index.jsx',
-        actionEditor:'./src/action/index.jsx',
-        packageEditor:'./src/package/index.jsx',
-        flowDesigner:'./src/flow/index.jsx',
+        // frame:'./src/frame/index.jsx',
+        // variableEditor:'./src/variable/index.jsx',
+        // constantEditor:'./src/constant/index.jsx',
+        // parameterEditor:'./src/parameter/index.jsx',
+        // actionEditor:'./src/action/index.jsx',
+        // packageEditor:'./src/package/index.jsx',
+        // flowDesigner:'./src/flow/index.jsx',
         ruleSetEditor:'./src/editor/urule/index.jsx',
-        decisionTableEditor:'./src/editor/decisiontable/index.jsx',
-        scriptDecisionTableEditor:'./src/editor/scriptdecisiontable/index.jsx',
-        decisionTreeEditor:'./src/editor/decisiontree/index.jsx',
-        clientConfigEditor:'./src/client/index.jsx',
-        ulEditor:'./src/editor/ul/index.jsx',
-        scoreCardTable:'./src/scorecard/index.jsx',
-        permissionConfigEditor:'./src/permission/index.jsx'
+        // decisionTableEditor:'./src/editor/decisiontable/index.jsx',
+        // scriptDecisionTableEditor:'./src/editor/scriptdecisiontable/index.jsx',
+        // decisionTreeEditor:'./src/editor/decisiontree/index.jsx',
+        // clientConfigEditor:'./src/client/index.jsx',
+        // ulEditor:'./src/editor/ul/index.jsx',
+        // scoreCardTable:'./src/scorecard/index.jsx',
+        // permissionConfigEditor:'./src/permission/index.jsx'
     },
     output: {
-        path: '../urule-console/src/main/resources/asserts/js',
-        filename: '[name].bundle.js'
+        path: './dist',
+        filename: 'main.bundle.js'
     },
     module: {
         loaders: [

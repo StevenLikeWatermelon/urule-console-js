@@ -39,7 +39,6 @@ urule.ComplexArithmetic=function(rule){
 		}, {
 			label : "删除",
 			onClick : function(){
-				window._setDirty();
 				if(self.nextType){
 					self.nextType.getContainer().remove();
 					self.nextType=null;
@@ -59,7 +58,6 @@ urule.ComplexArithmetic=function(rule){
 	
 };
 urule.ComplexArithmetic.prototype.setOperator=function(operator){
-	window._setDirty();
 	this.operator=operator;
 	this.info="";
 	switch(operator){

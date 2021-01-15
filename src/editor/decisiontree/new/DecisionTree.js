@@ -80,7 +80,7 @@ export default class DecisionTree{
     addProperty(property){
         this.propertyContainer.append(property.getContainer());
         this.properties.push(property);
-        window._setDirty();
+        
     };
     
     initToolbar(){
@@ -195,12 +195,12 @@ export default class DecisionTree{
                     }
                     postData.versionComment=versionComment;
                     ajaxSave(url,postData,function () {
-                        cancelDirty();
+                        
                     })
                 });
             }else{
                 ajaxSave(url,postData,function () {
-                    cancelDirty();
+                    
                 })
             }
         };
@@ -266,31 +266,9 @@ export default class DecisionTree{
                     refreshParameterLibraries();
                     refreshFunctionLibraries();
                     self.topNode.initData(treeData["variableTreeNode"]);
-                    cancelDirty();
+                    
                 }
             });
         };
     }
-};
-
-window._setDirty=function(){
-    if(window._dirty){
-        return;
-    }
-    window._dirty=true;
-    $("#saveButton").html("<i class='rf rf-save'></i> *保存");
-    $("#saveButton").removeClass("disabled");
-    $("#saveButtonNewVersion").html("<i class='rf rf-savenewversion'></i> *保存新版本");
-    $("#saveButtonNewVersion").removeClass("disabled");
-};
-
-function cancelDirty(){
-    if(!window._dirty){
-        return;
-    }
-    window._dirty=false;
-    $("#saveButton").html("<i class='rf rf-save'></i> 保存");
-    $("#saveButton").addClass("disabled");
-    $("#saveButtonNewVersion").html("<i class='rf rf-savenewversion'></i> 保存新版本");
-    $("#saveButtonNewVersion").addClass("disabled");
 };

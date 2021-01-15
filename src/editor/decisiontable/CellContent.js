@@ -16,7 +16,6 @@ urule.CellContent.prototype.clean=function(data){
 	}
 	this.inputType=new urule.InputType(null,"无");
 	this.container.append(this.inputType.getContainer());
-	window._setDirty();
 };
 urule.CellContent.prototype.initData=function(data){
 	this.inputType.setValueType(data["valueType"],data);

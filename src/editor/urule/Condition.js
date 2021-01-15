@@ -54,7 +54,7 @@ urule.Condition.prototype.initMenu=function(constantLibraries){
 					"color":"white"
 				});
 				URule.setDomContent(self.label,".");
-				window._setDirty();
+				
 			}
 		},{
 			label:"选择参数",
@@ -90,7 +90,7 @@ urule.Condition.prototype.initMenu=function(constantLibraries){
 					"color":"white"
 				});
 				URule.setDomContent(self.label,".");
-				window._setDirty();
+				
 			}
 		},{
 			label:"选择方法",
@@ -126,7 +126,7 @@ urule.Condition.prototype.initMenu=function(constantLibraries){
 					"color":"white"
 				});
 				URule.setDomContent(self.label,".");
-				window._setDirty();
+				
 			}
 		},{
 			label:"选择函数",
@@ -162,7 +162,7 @@ urule.Condition.prototype.initMenu=function(constantLibraries){
 					"color":"white"
 				});
 				URule.setDomContent(self.label,".");
-				window._setDirty();
+				
 			}
 		}]
 	});
@@ -254,6 +254,10 @@ urule.Condition.prototype.initData=function(data){
 	}
 };
 urule.Condition.prototype.toXml=function(){
+	if (!this.operator) {
+		throw '请选择类型!'
+		return
+	}
 	var xml="<atom op=\""+this.operator.getOperator()+"\">";
 	xml+="<left ";
 	if(this.type=="variable"){

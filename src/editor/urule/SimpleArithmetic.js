@@ -67,7 +67,7 @@ urule.SimpleArithmetic.prototype.initData=function(data){
 	this.value.initData(data["value"]);
 };
 urule.SimpleArithmetic.prototype.setOperator=function(operator){
-	window._setDirty();
+	
 	this.operator=operator;
 	var info="";
 	switch(operator){

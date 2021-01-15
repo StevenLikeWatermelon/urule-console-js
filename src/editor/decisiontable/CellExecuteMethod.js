@@ -68,7 +68,7 @@ urule.CellExecuteMethod.prototype.initMenu=function(actionLibraries){
 	});
 };
 urule.CellExecuteMethod.prototype.clean=function(){
-	window._setDirty();
+	
 	if(this.action){
 		this.action.getContainer().remove();
 	}
@@ -79,7 +79,7 @@ urule.CellExecuteMethod.prototype.clean=function(){
 	this.action=null;
 };
 urule.CellExecuteMethod.prototype.setAction=function(data){
-	window._setDirty();
+	
 	if(this.action){
 		this.action.getContainer().remove();
 	}

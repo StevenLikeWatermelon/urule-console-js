@@ -37,63 +37,65 @@ window.generateContainer=function(){
 };
 
 window.refreshParameterLibraries=function(){
-	var parameterFiles="";
-	for(var i=0;i<parameterLibraries.length;i++){
-		var parameter=parameterLibraries[i];
-		if(i==0){
-			parameterFiles=parameter;
-		}else{
-			parameterFiles+=";"+parameter;
-		}
-	}
-	if(parameterFiles=="" || parameterFiles.length<2){
-		return;
-	}
-	var url=window._server+'/common/loadXml';
-	$.ajax({
-		type:'POST',
-		data:{files:parameterFiles},
-		url:url,
-		error:function(req,error){
-			MsgBox.alert("加载文件失败！");
-		},
-		success:function(data){
+	
+	let data = [
+		[
+			{
+				"name": "test",
+				"type": "Custom",
+				"clazz": "kkk",
+				"variables": [
+					{
+						"name": "kkk",
+						"label": "kkk",
+						"type": "String",
+						"dataType": "String",
+						"act": "InOut"
+					},
+					{
+						"name": "uuu",
+						"label": "uuu",
+						"type": "String",
+						"dataType": "String",
+						"act": "InOut"
+					}
+				]
+			},
+			{
+				"name": "test2",
+				"type": "Custom",
+				"clazz": "kkk2",
+				"variables": [
+					{
+						"name": "kkk2",
+						"label": "kkk23",
+						"type": "String",
+						"dataType": "String",
+						"act": "InOut"
+					},
+					{
+						"name": "uuu2",
+						"label": "uuu2",
+						"type": "String",
+						"dataType": "String",
+						"act": "InOut"
+					}
+				]
+			}
+		]
+	]
 			window._uruleEditorParameterLibraries=data;
 			$.each(window._ParameterValueArray,function(index,item){
 				item.initMenu(data);
 			});
-		}
-	});	
 };
 
 window.refreshVariableLibraries=function(){
-	var variableFiles="";
-	for(var i=0;i<variableLibraries.length;i++){
-		var variable=variableLibraries[i];
-		if(i==0){
-			variableFiles=variable;
-		}else{
-			variableFiles+=";"+variable;
-		}
-	}
-	if(variableFiles=="" || variableFiles.length<2){
-		return;
-	}
-	var url=window._server+'/common/loadXml';
-	$.ajax({
-		type:'POST',
-		data:{files:variableFiles},
-		url:url,
-		error:function(req,error){
-			MsgBox.alert("加载文件失败！");
-		},
-		success:function(data){
+	let data = [[{"name":"test","type":"Custom","clazz":"kkk","variables":[{"name":"kkk","label":"kkk","type":"String","dataType":"String","act":"InOut"},{"name":"uuu","label":"uuu","type":"String","dataType":"String","act":"InOut"}]}]]
 			window._uruleEditorVariableLibraries=data;
 			$.each(window._VariableValueArray,function(index,item){
 				item.initMenu(data);
 			});
-		}
-	});
 };
 window.refreshActionLibraries=function(){
 	var actionFiles="";

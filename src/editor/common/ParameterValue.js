@@ -1,13 +1,16 @@
 /**
  * @author GJ
  */
-urule.ParameterValue=function(arithmetic,data,act){
+urule.ParameterValue=function(arithmetic,data,act,functionProperty){
 	this.arithmetic=arithmetic;
 	this.container=$("<span>");
-	this.label=generateContainer();
-	this.container.append(this.label);
-	this.label.css({
-		"color":"#6b3db0"
+
+    var self=this;
+    this.label=generateContainer();
+    this.functionProperty=functionProperty;
+    this.container.append(this.label);
+    this.label.css({
+		"color":"darkcyan"
 	});
 	URule.setDomContent(this.label,"请选择参数");
 	if(arithmetic){
@@ -22,7 +25,7 @@ urule.ParameterValue=function(arithmetic,data,act){
 };
 
 urule.ParameterValue.prototype.getDisplayContainer=function(){
-	var container=$("<span>参数."+this.parameterLabel+"</span>");
+	var container=$("<span>"+this.category+"."+this.variableLabel+"</span>");
 	if(this.arithmetic){
 		var dis=this.arithmetic.getDisplayContainer();
 		if(dis){
@@ -41,38 +44,59 @@ urule.ParameterValue.prototype.matchAct=function(act){
 	}
 	return false;
 };
-urule.ParameterValue.prototype.initMenu=function(parameterLibraries){
+urule.ParameterValue.prototype.initMenu=function(variableLibraries){
 	var data=window._uruleEditorParameterLibraries;
-	if(parameterLibraries){
-		data=parameterLibraries;
+	if(variableLibraries){
+		data=variableLibraries;
 	}
 	if(!data){
 		return;
 	}
-	var self,onClick,config;
+	var self,onCategoryClick,onParameterClick,config;
 	self=this;
-	onClick=function(menuItem){
+	onCategoryClick=function(menuItem){
+		self.setValue({variableCategory:menuItem.label,variables:menuItem.variables});
+	};
+	onParameterClick=function(menuItem){
 		self.setValue({
-			variableName:menuItem.name,
+			variables:menuItem.parent.parent.variables,
+			variableCategory:menuItem.parent.parent.label,
 			variableLabel:menuItem.label,
+			variableName:menuItem.name,
 			datatype:menuItem.datatype
 		});
-
 	};
 	config={menuItems:[]};
-	$.each(data,function(index,variables){
-		$.each(variables||[],function(i,variable){
-			if(self.matchAct(variable.act)){
-				var menuItem={
-					name:variable.name,
-					label:variable.label,
-					datatype:variable.type,
-					act:variable.act,
-					onClick:onClick
-				};
-				config.menuItems.push(menuItem);
+	$.each(data,function(index,categories){
+		$.each(categories,function(i,category){
+			var variables=category.variables;
+			if(self.functionProperty && self.category){
+				if(category.name==self.category){
+					self.functionProperty.initMenu(variables);
+				}
 			}
-
+			var menuItem={
+				label:category.name,
+				variables:variables,
+				onClick:onCategoryClick
+			}
+			$.each(variables||[],function(j,variable){
+				if(!menuItem.subMenu){
+					menuItem.subMenu={menuItems:[]};
+				}
+				if(self.matchAct(variable.act)){
+					var subMenuItem={
+						name:variable.name,
+						label:variable.label,
+						datatype:variable.type,
+						act:variable.act,
+						variables:variables,
+						onClick:onParameterClick
+					};
+					menuItem.subMenu.menuItems.push(subMenuItem);
+				}
+			});
+			config.menuItems.push(menuItem);
 		});
 	});
 	if(self.menu){
@@ -85,11 +109,19 @@ urule.ParameterValue.prototype.initMenu=function(parameterLibraries){
 	});
 };
 urule.ParameterValue.prototype.setValue=function(data){
-	this.parameterName=data["variableName"];
-	this.parameterLabel=data["variableLabel"];
+	var self=this;
+	this.category=data["variableCategory"];
+	this.variableName=data["variableName"];
+	this.variableLabel=data["variableLabel"];
 	this.datatype=data["datatype"];
-	URule.setDomContent(this.label,"参数."+this.parameterLabel);
-	window._setDirty();
+	if(this.functionProperty){
+		this.functionProperty.initMenu(data["variables"]);			
+	}
+	if(this.variableLabel){
+		URule.setDomContent(this.label,this.category+"."+this.variableLabel);
+	}else{
+		URule.setDomContent(this.label,this.category);
+	}
 };
 urule.ParameterValue.prototype.initData=function(data){
 	this.setValue(data);
@@ -99,11 +131,21 @@ urule.ParameterValue.prototype.initData=function(data){
 };
 
 urule.ParameterValue.prototype.toXml=function(){
-	if(!this.parameterLabel || this.parameterLabel==""){
+	if(!this.category || this.category==""){
 		throw "参数不能为空！";
 	}
-	var xml=" var-category=\"参数\" var=\""+this.parameterName+"\" var-label=\""+this.parameterLabel+"\" datatype=\""+this.datatype+"\"";
+	var xml="var-category=\""+this.category+"\"";
+	if(this.variableName){
+		xml+=" var=\""+this.variableName+"\" var-label=\""+this.variableLabel+"\" datatype=\""+this.datatype+"\"";
+	}
 	return xml;
+};
+urule.ParameterValue.prototype.getType=function(){
+	if(this.variableName){
+		return "Parameter";
+	}else{
+		return "ParameterCategory";
+	}
 };
 urule.ParameterValue.prototype.getContainer=function(){
 	return this.container;

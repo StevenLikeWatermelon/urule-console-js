@@ -42,7 +42,7 @@ export default class Col{
         });
         $(document).mouseup(function (e) {
             resizeStart=false;
-            window._setDirty();
+            
         });
     }
 }

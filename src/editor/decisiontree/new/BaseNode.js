@@ -59,7 +59,7 @@ export default class BaseNode{
         this.parentNode.resetItemPosition(pos,-nodeHeight);
         this.parentNode.resetParentNodePosition();
         this.resetCanvasSize();
-        window._setDirty();
+        
     }
     addChild(nodeType){
         var parentLeft=parseInt(this.nodeContainer.css("left"))+3;
@@ -120,7 +120,7 @@ export default class BaseNode{
         }
 
         this.resetCanvasSize();
-        window._setDirty();
+        
         return conn.node;
     }
     resizeNode(){

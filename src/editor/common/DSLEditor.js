@@ -55,12 +55,7 @@ $(document).ready(function() {
 function init(){
 	var height=$(document).height()-55;
 	codeMirror.setSize("100%",height)
-	window._dirty=false;
 	var file=_getRequestParameter("file");
-	if(!file || file.length<1){
-		URule.alert("当前编辑器未指定具体规则文件！");
-		return;
-	}
 	var saveButton = '<div class="btn-group navbar-btn" style="margin-right:10px;" role="group" aria-label="...">'+
 						'<button id="saveButton" type="button" class="btn btn-default navbar-btn" ><i class="icon-save"></i> 保存</button>' + 
 						'<button id="saveButtonNewVersion" type="button" class="btn btn-default navbar-btn" ><i class="icon-save"></i> 保存新版本</button>' +
@@ -126,7 +121,6 @@ function init(){
 		dialog.open();
 	});
 	
-	window._dirty=false;
 	var url="urule?action=loaddsl&file="+file+"";
 	$.ajax({
 		cache:false,
@@ -139,10 +133,6 @@ function init(){
 			codeMirror.setValue(data);
 			$("#saveButton").addClass("disabled");
 			$("#saveButtonNewVersion").addClass("disabled");
-
-			codeMirror.on("change",function(){
-				setDirty();
-			});
 			loadResLib();
 		}
 	});
@@ -219,32 +209,10 @@ function save(file,newVersion){
 			URule.alert("保存失败！");
 		},
 		success:function(data){
-			cancelDirty();
 		}
 	});
 };
 
-function setDirty(){
-	if(window._dirty){
-		return;
-	}
-	window._dirty=true;
-	$("#saveButton").html("<i class='icon-save'></i> *保存");
-	$("#saveButton").removeClass("disabled");
-	$("#saveButtonNewVersion").html("<i class='icon-save'></i> *保存新版本");
-	$("#saveButtonNewVersion").removeClass("disabled");
-};
-
-function cancelDirty(){
-	if(!window._dirty){
-		return;
-	}
-	window._dirty=false;
-	$("#saveButton").html("<i class='icon-save'></i> 保存");
-	$("#saveButton").addClass("disabled");
-	$("#saveButtonNewVersion").html("<i class='icon-save'></i> 保存新版本");
-	$("#saveButtonNewVersion").addClass("disabled");
-};
 
 function _getRequestParameter(name){
 	var value=null;

@@ -32,7 +32,7 @@ urule.ConfigActionDialog.prototype.open=function(){
 						_this.tbody.append(_this.newLibRow(path));
 						window.actionLibraries.push(path);
 						window.refreshActionLibraries();
-						window._setDirty();
+						
 					}
 				});
 			}
@@ -70,7 +70,7 @@ urule.ConfigActionDialog.prototype.newLibRow=function(lib){
 		window.actionLibraries.splice(pos,1);
 		row.remove();
 		window.refreshActionLibraries();
-		window._setDirty();
+		
 	});
 	row.append(delCol);
 	return row;

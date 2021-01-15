@@ -129,13 +129,13 @@ export default class ScoreCardTable{
         if(rowData){
             attributeRow.initConditionRows(rowData);
         }
-        window._setDirty();
+        
     }
     addCustomCol(colData){
         if(colData){
             const col=new CustomCol(this,colData.name,colData.width);
             this.customCols.push(col);
-            window._setDirty();
+            
         }else{
             const _this=this;
             bootbox.prompt("请输入列名",function (name) {
@@ -144,7 +144,7 @@ export default class ScoreCardTable{
                 }
                 const col=new CustomCol(_this,name);
                 _this.customCols.push(col);
-                window._setDirty();
+                
             });
         }
     }

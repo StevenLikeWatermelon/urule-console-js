@@ -43,7 +43,6 @@ import CodeMirror from 'codemirror';
 				CodeMirror.commands.autocomplete(codeMirror);
 			}
 			cellData.script = cm.getValue();
-			ht.setDirty();
 			setTimeout(function() {
 				ht.invoke("render");
 			}, 200);

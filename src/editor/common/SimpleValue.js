@@ -19,7 +19,6 @@ urule.SimpleValue=function(arithmetic,data){
 		}
 		self.valueContainer.show();
 		$(this).trigger("DOMSubtreeModified");
-		window._setDirty();
 	}).mousedown(function(evt){
 		evt.stopPropagation();
 	}).keydown(function(evt){

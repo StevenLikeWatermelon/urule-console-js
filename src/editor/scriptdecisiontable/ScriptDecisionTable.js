@@ -9,18 +9,6 @@ import './ScriptRenderers.js';
 import '../table/manualColumnResize.js';
 import '../table/manualRowResize.js';
 
-window._dirty=false;
-window._setDirty=function(){
-	if(window._dirty){
-		return;
-	}
-	window._dirty=true;
-	$("#saveButton").html("<i class='rf rf-save'></i> *保存");
-	$("#saveButton").removeClass("disabled");
-	$("#saveButtonNewVersion").html("<i class='rf rf-savenewversion'></i> *保存新版本");
-	$("#saveButtonNewVersion").removeClass("disabled");
-};
-
 (function(Handsontable){
 	if(!window.URule){
 		window.URule={};
@@ -74,7 +62,7 @@ window._setDirty=function(){
 			self.createCellDataRange(row,row,col,self.getLastColIndex());
 			self.insertRow(row-1);
 			self.renderCells();
-			self.setDirty();
+			
 			$("#deleteCriteriaButton").removeClass("disabled");
 			self.invoke("render");
 		});
@@ -91,7 +79,7 @@ window._setDirty=function(){
 			self.translateRow(row+rowspan,-rowspan);
 			self.removeRow(row,rowspan);
 			self.renderCells();
-			self.setDirty();
+			
 			self.invoke("render");
 			if(self.countRows()==1){
 				$(this).addClass("disabled");
@@ -259,14 +247,14 @@ window._setDirty=function(){
 		self.addHook("beforeColumnResize",function(col,size){
 			var colData=self.getColData(col);
 			colData.width=size;
-		    self.setDirty();
+		    
 		    self.invoke("render")
 		});
 
 		self.addHook("beforeRowResize",function(row,size){
 			var rowData=self.getRowData(row);
 			rowData.height=size;
-		    self.setDirty();
+		    
 		});
 		
 		self.addHook("afterRender",function(){
@@ -395,12 +383,7 @@ window._setDirty=function(){
 			return this._handsontable;
 		},
 		
-		setDirty:function(){
-			window._setDirty();
-		},
-		
 		resetState:function(){
-			window._dirty=false;
 			$("#saveButton").html("<i class='rf rf-save'></i> 保存");
 			$("#saveButton").addClass("disabled");
 			$("#saveButtonNewVersion").html("<i class='rf rf-savenewversion'></i> 保存新版本");
@@ -984,7 +967,7 @@ window._setDirty=function(){
 				}
 				self.insertCol(col-1);
 				self.renderCells();
-				self.setDirty();
+				
 				self.invoke("render");
 			};
 			
@@ -1040,7 +1023,7 @@ window._setDirty=function(){
 					self.translateCol(col,-1);
 					self.removeCol(col);
 					self.renderCells();
-					self.setDirty();
+					
 					self.invoke("render");
 				}
 			}, {
@@ -1109,7 +1092,7 @@ window._setDirty=function(){
 					self.removeCellDataRange(0,self.getLastRowIndex(),col,col);
 					self.translateCol(col,-1);
 					self.removeCol(col);
-					self.setDirty();
+					
 					self.invoke("render");
 				}
 			}];
@@ -1124,7 +1107,7 @@ window._setDirty=function(){
 				column.variableLabel=menuItem.label;
 				column.variableName=menuItem.name;
 				column.datatype=menuItem.datatype;
-				self.setDirty();
+				
 				self.invoke("render");
 			};
 			const variabeMenuItem=[];

@@ -253,7 +253,6 @@ urule.ComparisonOperator.prototype.setOperator=function(operator){
 		this.inputType=new urule.InputType();
 		break;
 	}
-	window._setDirty();
 };
 urule.ComparisonOperator.prototype.getOperator=function(){
 	if(this.operator==""){

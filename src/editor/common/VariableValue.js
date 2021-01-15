@@ -122,7 +122,6 @@ urule.VariableValue.prototype.setValue=function(data){
 	}else{
 		URule.setDomContent(this.label,this.category);
 	}
-	window._setDirty();
 };
 urule.VariableValue.prototype.initData=function(data){
 	this.setValue(data);

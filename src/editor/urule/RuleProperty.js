@@ -43,7 +43,7 @@ urule.RuleProperty=function(parent,name,defaultValue,editorType){
 				URule.setDomContent(valueLabel,self.value);
 			}
 			valueLabel.show();
-			window._setDirty();
+			
 		});
 		valueLabel.click(function(){
 			valueLabel.hide();
@@ -67,10 +67,10 @@ urule.RuleProperty=function(parent,name,defaultValue,editorType){
 			this.noRadio.prop("checked",true);
 		}
 		this.yesRadio.change(function(){
-			window._setDirty();
+			
 		});
 		this.noRadio.change(function(){
-			window._setDirty();
+			
 		});
 		valueLabel.hide();
 		this.container.append(this.yesRadio);
@@ -81,7 +81,7 @@ urule.RuleProperty=function(parent,name,defaultValue,editorType){
 		self.container.remove();
 		var pos=self.parent.properties.indexOf(self);
 		self.parent.properties.splice(pos,1);
-		window._setDirty();
+		
 	});
 	this.container.append(del);
 };

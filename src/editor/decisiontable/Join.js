@@ -52,7 +52,7 @@ urule.Join.prototype.setType=function(type){
 	}else{
 		URule.setDomContent(this.joinLabel,"并且");
 	}
-	window._setDirty();
+	
 };
 urule.Join.prototype.init=function(parentConnection){
 	if(parentConnection){
@@ -99,10 +99,10 @@ urule.Join.prototype.removeConnection=function(connection){
 	connection.remove();
 	this.children.splice(pos, 1);
 	this.resetContainerSize();
-	window._setDirty();
+	
 };
 urule.Join.prototype.addItem=function(isJoin){
-	window._setDirty();
+	
 	var childrenCount=this.getChildrenCount();
 	if(childrenCount>0 && this.parent){
 		var parentChildren=this.parent.getChildren();
@@ -156,7 +156,7 @@ urule.Join.prototype.resetItemPosition=function(index,add){
 		var parentJoin=this.parentConnection.getParentJoin();
 		parentJoin.resetItemPosition(pos+1,add);
 	}
-	window._setDirty();
+	
 };
 urule.Join.prototype.resetContainerSize=function(){
 	var container=this.context.getCanvas();

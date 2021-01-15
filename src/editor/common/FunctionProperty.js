@@ -45,7 +45,6 @@ urule.FunctionProperty.prototype.initMenu=function(data){
 	});
 };
 urule.FunctionProperty.prototype.setProperty=function(data){
-	window._setDirty();
 	this.variableName=data.name;
 	this.variableLabel=data.label,
 	URule.setDomContent(this.label,this.variableLabel);

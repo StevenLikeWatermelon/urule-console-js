@@ -17,7 +17,6 @@ urule.CellCondition=function(element){
 };
 urule.CellCondition.prototype.clean=function(){
 	this.join.clean();
-	window._setDirty();
 };
 urule.CellCondition.prototype.getId=function(){
 	return this.id;

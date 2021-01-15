@@ -97,7 +97,6 @@ urule.InputType.prototype.getDisplayContainer=function(){
 };
 
 urule.InputType.prototype.setValueType=function(valueType,value){
-	window._setDirty();
 	this.type=valueType;
 	if(this.variableValue){
 		this.variableValue.getContainer().hide();

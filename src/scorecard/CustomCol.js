@@ -39,7 +39,7 @@ export default class CustomCol extends Col{
             cell.td.remove();
         }
         this.td.remove();
-        window._setDirty();
+        
     }
     toXml(){
         let xml="<custom-col col-number=\""+this.getColNumber()+"\" name=\""+this.name+"\" width=\""+this.width+"\"/>";

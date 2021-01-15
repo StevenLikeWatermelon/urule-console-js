@@ -81,7 +81,6 @@ urule.MethodValue.prototype.initMenu=function(actionLibraries){
 };
 
 urule.MethodValue.prototype.setAction=function(data){
-	window._setDirty();
 	if(this.action){
 		this.action.getContainer().remove();
 	}

@@ -32,7 +32,7 @@ urule.ConfigParameterDialog.prototype.open=function(){
 						_this.tbody.append(_this.newLibRow(path));
 						window.parameterLibraries.push(path);
 						window.refreshParameterLibraries();
-						window._setDirty();
+						
 					}
 				});
 			}
@@ -69,7 +69,7 @@ urule.ConfigParameterDialog.prototype.newLibRow=function(lib){
 		window.parameterLibraries.splice(pos,1);
 		row.remove();
 		window.refreshParameterLibraries();
-		window._setDirty();
+		
 	});
 	row.append(delCol);
 	return row;

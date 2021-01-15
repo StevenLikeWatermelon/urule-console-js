@@ -32,7 +32,7 @@ urule.ConfigConstantDialog.prototype.open=function(){
 						_this.tbody.append(_this.newLibRow(path));
 						window.constantLibraries.push(path);
 						window.refreshConstantLibraries();
-						window._setDirty();
+						
 					}
 				});
 			}
@@ -69,7 +69,7 @@ urule.ConfigConstantDialog.prototype.newLibRow=function(lib){
 		window.constantLibraries.splice(pos,1);
 		row.remove();
 		window.refreshConstantLibraries();
-		window._setDirty();
+		
 	});
 	row.append(delCol);
 	return row;

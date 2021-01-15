@@ -46,7 +46,7 @@ urule.NamedCondition.prototype.initMenu=function(){
 					});
 					self.container.append(self.operator.getContainer());
 				}
-				window._setDirty();
+				
 			}
 		});
 	}
@@ -83,6 +83,10 @@ urule.NamedCondition.prototype.initData=function(data){
 urule.NamedCondition.prototype.toXml=function(){
 	if(!this.variableName){
 		throw "请定义条件.";
+	}
+	if (!this.operator) {
+		throw '请选择类型!'
+		return
 	}
 	var xml="<named-criteria op=\""+this.operator.getOperator()+"\" var=\""+this.variableName+"\" var-label=\""+this.variableLabel+"\" datatype=\""+this.datatype+"\">";
 	if(this.inputType){

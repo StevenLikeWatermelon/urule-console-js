@@ -69,7 +69,7 @@ urule.Rule.prototype.initData=function(){
 		this.addProperty(new urule.RuleProperty(this,"ruleflow-group",autoFocus,1));
 	}
     var remark=this.data["remark"];
-    this.remark.setData(remark);
+	this.remark.setData(remark);
 	var lhs=this.data["lhs"];
 	if(lhs){
 		var criterion=lhs["criterion"];
@@ -126,7 +126,7 @@ urule.Rule.prototype.initCriterion=function(criterion){
 urule.Rule.prototype.addProperty=function(property){
 	this.propertyContainer.append(property.getContainer());
 	this.properties.push(property);
-	window._setDirty();
+	
 };
 urule.Rule.prototype.initRemark=function(){
 	var remarkContainer=$("<div></div>");
@@ -161,7 +161,7 @@ urule.Rule.prototype.initHeader=function(){
 		self.nameEditor.hide();
 		self.nameLabel.show();
 		URule.setDomContent(self.nameLabel,self.name);
-		window._setDirty();
+		
 	});
 	this.nameEditor.hide();
 	var del=$(`<i class="glyphicon glyphicon-remove rule-delete"></i>`);
@@ -171,7 +171,7 @@ urule.Rule.prototype.initHeader=function(){
 			var pos=self.parent.rules.indexOf(self);
 			self.parent.rules.splice(pos,1);
 			self.container.remove();
-			window._setDirty();
+			
 		});
 	});
 	this.nameContainer.append(del);
@@ -279,7 +279,7 @@ urule.Rule.prototype.initThen=function(){
 					actions.splice(index,0,targetAction);
 				}
 			});
-			window._setDirty();
+			
 		}
 	});
 	this.addActionButton=$("<span class='rule-add-action'>添加动作</span>");
@@ -316,7 +316,7 @@ urule.Rule.prototype.initElse=function(){
 					actions.splice(index,0,targetAction);
 				}
 			});
-			window._setDirty();
+			
 		}
 	});
 
@@ -347,7 +347,7 @@ urule.Rule.prototype.addAction=function(data,iselse){
 			self.actions.splice(pos, 1);
 		}
 		actionDiv.remove();
-		window._setDirty();
+		
 	});
 	if(iselse){
 		this.elseActions.push(action);
@@ -359,7 +359,7 @@ urule.Rule.prototype.addAction=function(data,iselse){
 	if(data){
 		action.initData(data);
 	}
-	window._setDirty();
+	
 };
 urule.Rule.prototype.toXml=function(){
 	var xml="<rule name=\""+this.name+"\"";

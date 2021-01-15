@@ -62,7 +62,7 @@ urule.Connection.prototype.remove=function(){
 	}else{
 		this.conditionContainer.remove();
 	}
-	window._setDirty();
+	
 };
 
 urule.Connection.prototype.initCondition=function(){

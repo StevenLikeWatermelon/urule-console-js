@@ -17,7 +17,7 @@ TreeNode.prototype.delete=function(){
     if(!this.parentNode){
         return;
     }
-    _setDirty();
+    
     var pos;
     var parentChildrenNodes=this.parentNode.childrenNodes;
     for(var i= 0;i<parentChildrenNodes.length;i++){
@@ -59,7 +59,7 @@ TreeNode.prototype.delete=function(){
 };
 
 TreeNode.prototype.addChild=function(type){
-    _setDirty();
+    
     if(!this.nextRow){
         this.nextRow=$("<tr style='min-height:40px'>");
         this.nextLineRow=$("<tr style='height:20px;'>");

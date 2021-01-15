@@ -80,6 +80,10 @@ ConditionTreeNode.prototype.toXml=function(){
     if(this.childrenNodes.length==0){
         throw "条件节点下至少要有一个动作节点.";
     }
+    if (!this.operator) {
+		throw '请选择类型!'
+		return
+	}
     var xml="<condition-tree-node op=\""+this.operator.getOperator()+"\">";
     if(this.inputType){
         xml+=this.inputType.toXml();

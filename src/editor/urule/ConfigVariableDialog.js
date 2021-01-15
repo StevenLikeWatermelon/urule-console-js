@@ -32,7 +32,7 @@ urule.ConfigVariableDialog.prototype.open=function(){
 						_this.tbody.append(_this.newLibRow(path));
 						window.variableLibraries.push(path);
 						window.refreshVariableLibraries();
-						window._setDirty();
+						
 					}
 				});
 			}
@@ -69,7 +69,7 @@ urule.ConfigVariableDialog.prototype.newLibRow=function(lib){
 		window.variableLibraries.splice(pos,1);
 		row.remove();
 		window.refreshVariableLibraries();
-		window._setDirty();
+		
 	});
 	row.append(delCol);
 	return row;
