@@ -1,7 +1,6 @@
 /**
  * @author GJ
  */
-import {MsgBox} from 'flowdesigner';
 (function($){
 	$.fn.urule=function(){
 		this.rules=[];
@@ -26,47 +25,11 @@ import {MsgBox} from 'flowdesigner';
 			var rule=_addRule();
 			rule.initTopJoin();
 		});
-		$("#addLoopRuleButton").click(function(){
-			var rule=_addLoopRule();
-			rule.initTopJoin();
-		});
 
-		$("#configVarButton").click(function(){
-			if(!self.configVarDialog){
-				self.configVarDialog=new urule.ConfigVariableDialog(self);				
-			}
-			self.configVarDialog.open();
-		});
-		
-		$("#configConstantsButton").click(function(){
-			if(!self.configConstantDialog){
-				self.configConstantDialog=new urule.ConfigConstantDialog(self);				
-			}
-			self.configConstantDialog.open();
-		});
-		
-		$("#configActionButton").click(function(){
-			if(!self.configActionDialog){
-				self.configActionDialog=new urule.ConfigActionDialog(self);				
-			}
-			self.configActionDialog.open();
-		});
-		
-		$("#configParameterButton").click(function(){
-			if(!self.configParameterDialog){
-				self.configParameterDialog=new urule.ConfigParameterDialog(self);				
-			}
-			self.configParameterDialog.open();			
-		});
-		
 		$("#saveButton").click(function(){
 			save(false);
 		});
-		$("#saveButtonNewVersion").click(function(){
-			save(true);
-		});
-		$("#saveButtonNewVersion").addClass("disabled");
-		
+
 		_loadRulesetFileData();
 
 		var _this=this;
@@ -115,41 +78,16 @@ import {MsgBox} from 'flowdesigner';
 				}
 			}catch(error){
 				console.log(error);
-				MsgBox.alert(error);
+				console.log(error);
 				return;
 			}
 			xml+="</rule-set>";
 			console.log(xml);
-			// let postData={content:xml,file,newVersion};
-			// const url=window._server+'/common/saveFile';
-			// if(newVersion){
-			// 	bootbox.prompt("请输入新版本描述.",function (versionComment) {
-			// 		if(!versionComment){
-			// 			return;
-			// 		}
-			// 		postData.versionComment=versionComment;
-			// 		ajaxSave(url,postData,function () {
-			// 			
-			// 		})
-			// 	});
-			// }else{
-			// 	ajaxSave(url,postData,function () {
-			// 		
-			// 	})
-			// }
 		}
 		function _addRule(data){
 			var ruleContainer=$("<div class='well' style='margin:5px;padding:8px'></div>");
 			self.append(ruleContainer);
 			var rule=new urule.Rule(self,ruleContainer,data);
-			self.rules.push(rule);
-			
-			return rule;
-		};
-		function _addLoopRule(data){
-			var ruleContainer=$("<div class='well' style='margin:5px;padding:8px;border-color:#337AB7'></div>");
-			self.append(ruleContainer);
-			var rule=new urule.LoopRule(self,ruleContainer,data);
 			self.rules.push(rule);
 			
 			return rule;
@@ -231,56 +169,6 @@ import {MsgBox} from 'flowdesigner';
 					"withElse": false
 				});
 			}, 1000)
-			// var url=window._server+'/common/loadXml';
-			// $.ajax({
-			// 	url:url,
-			// 	type:'POST',
-			// 	data:{files:file},
-			// 	error:function(req,error){
-			// 		MsgBox.alert("加载文件失败！");
-			// 	},
-			// 	success:function(data){
-			// 		var ruleset=data[0];
-			// 		var libraries=ruleset["libraries"];
-            //         // self.remark.setData(ruleset["remark"]);
-			// 		if(libraries){
-			// 			for(var i=0;i<libraries.length;i++){
-			// 				var lib=libraries[i];
-			// 				var type=lib["type"];
-			// 				var path=lib["path"];
-			// 				switch(type){
-			// 				case "Constant":
-			// 					constantLibraries.push(path);
-			// 					break;
-			// 				case "Action":
-			// 					actionLibraries.push(path);
-			// 					break;
-			// 				case "Variable":
-			// 					variableLibraries.push(path);
-			// 					break;
-			// 				case "Parameter":
-			// 					parameterLibraries.push(path);
-			// 					break;
-			// 				}
-			// 			}
-			// 		}
-			// 		refreshActionLibraries();
-			// 		refreshConstantLibraries();
-					
-			// 		
-			// 		refreshFunctionLibraries();
-			// 		var rules=ruleset["rules"];
-			// 		for(var i=0;i<rules.length;i++){
-			// 			var rule=rules[i];
-			// 			if(rule.loopRule){
-            //                 _addLoopRule(rule);
-            //             }else{
-            //                 _addRule(rule);
-            //             }
-			// 		}
-			// 		
-			// 	}
-			// });
 		}
 		
 	};
