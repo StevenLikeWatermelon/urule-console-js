@@ -77,17 +77,18 @@ urule.Join.prototype.init=function(parentConnection){
 			onClick:function(){
 				self.addItem(true);				
 			}
-		},{
-			label:"添加命名联合条件",
-			onClick:function(){
-				self.addItem("named");
-			}
-		},{
+		},
+		// {
+		// 	label:"添加命名联合条件",
+		// 	onClick:function(){
+		// 		self.addItem("named");
+		// 	}
+		// },
+		{
 			label:"删除",
 			onClick:function(){
 				if(self.children.length>0){
-					MsgBox.alert("请先删除当前连接下子元素！");
-					return;
+					console.log('请先删除当前连接下子元素');
 				}
 				if(parentConnection){
 					var parentJoin=parentConnection.getParentJoin();
