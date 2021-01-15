@@ -1,8 +1,6 @@
 /**
  * @author GJ
  */
-import {MsgBox} from 'flowdesigner';
-
 urule.Join=function(context){
 	this.type="and";
 	this.context=context;

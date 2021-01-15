@@ -8,7 +8,6 @@ import '../../../node_modules/codemirror/addon/lint/lint.css';
 import './ul.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {MsgBox} from 'flowdesigner';
 import CodeMirror from 'codemirror';
 import '../../../node_modules/codemirror/addon/mode/simple.js';
 import '../../../node_modules/codemirror/addon/hint/show-hint.js';
@@ -189,7 +188,7 @@ function loadResLib(){
     var file=getParameter("file");
     var content=codeMirror.getValue();
     if(!content || content.length<10){
-        MsgBox.alert("请先输入脚本.");
+        console.log("请先输入脚本.");
         return;
     }
     var url=window._server+'/uleditor/loadULLibs';

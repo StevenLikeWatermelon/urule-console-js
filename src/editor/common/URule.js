@@ -1,8 +1,6 @@
 /**
  * @author GJ
  */
-import {MsgBox} from 'flowdesigner';
-
 window._ConstantValueArray=[];
 window._ActionTypeArray=[];
 window._VariableValueArray=[];
@@ -116,7 +114,7 @@ window.refreshActionLibraries=function(){
 		data:{files:actionFiles},
 		url:url,
 		error:function(req,error){
-			MsgBox.alert("加载文件失败！");
+			console.log("加载文件失败！");
 		},
 		success:function(data){
 			window._uruleEditorActionLibraries=data;
@@ -131,7 +129,7 @@ window.refreshFunctionLibraries=function(){
 	$.ajax({
 		url:url,
 		error:function(req,error){
-			MsgBox.alert("加载函数失败！");
+			console.log("加载函数失败！");
 		},
 		success:function(data){
 			window._uruleEditorFunctionLibraries=data;
@@ -161,7 +159,7 @@ window.refreshConstantLibraries=function(){
 		url:url,
 		type:'POST',
 		error:function(req,error){
-			MsgBox.alert("加载文件失败！");
+			console.log("加载文件失败！");
 		},
 		success:function(data){
 			window._uruleEditorConstantLibraries=data;

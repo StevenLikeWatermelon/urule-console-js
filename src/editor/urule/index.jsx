@@ -20,10 +20,6 @@ import '../common/VariableValue.js';
 import '../common/ResourceListDialog.js';
 import '../common/ResourceVersionDialog.js';
 import '../common/ConstantValue.js';
-import './ConfigActionDialog.js';
-import './ConfigConstantDialog.js';
-import './ConfigParameterDialog.js';
-import './ConfigVariableDialog.js';
 import './ActionType.js';
 import './SimpleArithmetic.js';
 import './PrintAction.js';
@@ -47,7 +43,6 @@ import '../common/SimpleValue.js';
 import './NamedReferenceValue.js';
 import './Condition.js';
 import './Rule.js';
-import './LoopRule.js';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
