@@ -20,43 +20,45 @@ urule.Condition=function(parentContainer){
 urule.Condition.prototype.initMenu=function(constantLibraries){
 	var self=this;
 	self.menu=new URule.menu.Menu({
-		menuItems:[{
-			label:"选择变量",
-			onClick:function(){
-				self.type="variable";
-				if(self.parameterValue){
-					self.parameterValue.getContainer().hide();
-				}
-				if(self.functionValue){
-					self.functionValue.getContainer().hide();
-				}
-				if(self.methodValue){
-					self.methodValue.getContainer().hide();				
-				}
-				if(self.variableValue){
-					self.variableValue.getContainer().show();
-				}else{
-					self.variableValue=new urule.VariableValue(self.arithmetic,null,"In",null,false);
-					self.valueContainer.append(self.variableValue.getContainer());				
-				}
-				if(self.operator){
-					self.operator.getContainer().show();
-				}else{
-					self.operator=new urule.ComparisonOperator(function(){
-						self.inputType=self.operator.getInputType();
-						if(self.inputType){
-							self.container.append(self.inputType.getContainer());		
-						}
-					});
-					self.container.append(self.operator.getContainer());
-				}
-				self.label.css({
-					"color":"white"
-				});
-				URule.setDomContent(self.label,".");
+		menuItems:[
+		// {
+		// 	label:"选择变量",
+		// 	onClick:function(){
+		// 		self.type="variable";
+		// 		if(self.parameterValue){
+		// 			self.parameterValue.getContainer().hide();
+		// 		}
+		// 		if(self.functionValue){
+		// 			self.functionValue.getContainer().hide();
+		// 		}
+		// 		if(self.methodValue){
+		// 			self.methodValue.getContainer().hide();				
+		// 		}
+		// 		if(self.variableValue){
+		// 			self.variableValue.getContainer().show();
+		// 		}else{
+		// 			self.variableValue=new urule.VariableValue(self.arithmetic,null,"In",null,false);
+		// 			self.valueContainer.append(self.variableValue.getContainer());				
+		// 		}
+		// 		if(self.operator){
+		// 			self.operator.getContainer().show();
+		// 		}else{
+		// 			self.operator=new urule.ComparisonOperator(function(){
+		// 				self.inputType=self.operator.getInputType();
+		// 				if(self.inputType){
+		// 					self.container.append(self.inputType.getContainer());		
+		// 				}
+		// 			});
+		// 			self.container.append(self.operator.getContainer());
+		// 		}
+		// 		self.label.css({
+		// 			"color":"white"
+		// 		});
+		// 		URule.setDomContent(self.label,".");
 				
-			}
-		},{
+		// 	}
+		// },
+		{
 			label:"选择参数",
 			onClick:function(){
 				self.type="parameter";
@@ -92,80 +94,82 @@ urule.Condition.prototype.initMenu=function(constantLibraries){
 				URule.setDomContent(self.label,".");
 				
 			}
-		},{
-			label:"选择方法",
-			onClick:function(){
-				self.type="method";
-				if(self.variableValue){
-					self.variableValue.getContainer().hide();
-				}
-				if(self.parameterValue){
-					self.parameterValue.getContainer().hide();
-				}
-				if(self.functionValue){
-					self.functionValue.getContainer().hide();
-				}
-				if(self.methodValue){
-					self.methodValue.getContainer().show();				
-				}else{
-					self.methodValue=new urule.MethodValue(self.arithmetic,null);
-					self.valueContainer.append(self.methodValue.getContainer());				
-				}
-				if(self.operator){
-					self.operator.getContainer().show();
-				}else{
-					self.operator=new urule.ComparisonOperator(function(){
-						self.inputType=self.operator.getInputType();
-						if(self.inputType){
-							self.container.append(self.inputType.getContainer());		
-						}
-					});
-					self.container.append(self.operator.getContainer());
-				}
-				self.label.css({
-					"color":"white"
-				});
-				URule.setDomContent(self.label,".");
+		},
+		// {
+		// 	label:"选择方法",
+		// 	onClick:function(){
+		// 		self.type="method";
+		// 		if(self.variableValue){
+		// 			self.variableValue.getContainer().hide();
+		// 		}
+		// 		if(self.parameterValue){
+		// 			self.parameterValue.getContainer().hide();
+		// 		}
+		// 		if(self.functionValue){
+		// 			self.functionValue.getContainer().hide();
+		// 		}
+		// 		if(self.methodValue){
+		// 			self.methodValue.getContainer().show();				
+		// 		}else{
+		// 			self.methodValue=new urule.MethodValue(self.arithmetic,null);
+		// 			self.valueContainer.append(self.methodValue.getContainer());				
+		// 		}
+		// 		if(self.operator){
+		// 			self.operator.getContainer().show();
+		// 		}else{
+		// 			self.operator=new urule.ComparisonOperator(function(){
+		// 				self.inputType=self.operator.getInputType();
+		// 				if(self.inputType){
+		// 					self.container.append(self.inputType.getContainer());		
+		// 				}
+		// 			});
+		// 			self.container.append(self.operator.getContainer());
+		// 		}
+		// 		self.label.css({
+		// 			"color":"white"
+		// 		});
+		// 		URule.setDomContent(self.label,".");
 				
-			}
-		},{
-			label:"选择函数",
-			onClick:function(){
-				self.type="commonfunction";
-				if(self.variableValue){
-					self.variableValue.getContainer().hide();
-				}
-				if(self.parameterValue){
-					self.parameterValue.getContainer().hide();
-				}
-				if(self.methodValue){
-					self.methodValue.getContainer().hide();				
-				}
-				if(self.functionValue){
-					self.functionValue.getContainer().show();
-				}else{
-					self.functionValue=new urule.FunctionValue(self.arithmetic,null,"In");
-					self.valueContainer.append(self.functionValue.getContainer());				
-				}
-				if(self.operator){
-					self.operator.getContainer().show();
-				}else{
-					self.operator=new urule.ComparisonOperator(function(){
-						self.inputType=self.operator.getInputType();
-						if(self.inputType){
-							self.container.append(self.inputType.getContainer());		
-						}
-					});
-					self.container.append(self.operator.getContainer());
-				}
-				self.label.css({
-					"color":"white"
-				});
-				URule.setDomContent(self.label,".");
+		// 	}
+		// },
+		// {
+		// 	label:"选择函数",
+		// 	onClick:function(){
+		// 		self.type="commonfunction";
+		// 		if(self.variableValue){
+		// 			self.variableValue.getContainer().hide();
+		// 		}
+		// 		if(self.parameterValue){
+		// 			self.parameterValue.getContainer().hide();
+		// 		}
+		// 		if(self.methodValue){
+		// 			self.methodValue.getContainer().hide();				
+		// 		}
+		// 		if(self.functionValue){
+		// 			self.functionValue.getContainer().show();
+		// 		}else{
+		// 			self.functionValue=new urule.FunctionValue(self.arithmetic,null,"In");
+		// 			self.valueContainer.append(self.functionValue.getContainer());				
+		// 		}
+		// 		if(self.operator){
+		// 			self.operator.getContainer().show();
+		// 		}else{
+		// 			self.operator=new urule.ComparisonOperator(function(){
+		// 				self.inputType=self.operator.getInputType();
+		// 				if(self.inputType){
+		// 					self.container.append(self.inputType.getContainer());		
+		// 				}
+		// 			});
+		// 			self.container.append(self.operator.getContainer());
+		// 		}
+		// 		self.label.css({
+		// 			"color":"white"
+		// 		});
+		// 		URule.setDomContent(self.label,".");
 				
-			}
-		}]
-	});
+		// 	}
+		// }
+	]});
 	this.label.click(function(e){
 		self.menu.show(e);
 	});

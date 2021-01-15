@@ -40,43 +40,47 @@ urule.ComparisonOperator=function(menuCallFun){
 			label : "等于",
 			name:"Equals",
 			onClick : onClick
-		},  {
-			label : "等于(不分大小写)",
-			name:"EqualsIgnoreCase",
-			onClick : onClick
-		},  {
-			label : "开始于",
-			name:"StartWith",
-			onClick : onClick
-		}, {
-			label : "不开始于",
-			name:"NotStartWith",
-			onClick : onClick
-		},{
-			label : "结束于",
-			name:"EndWith",
-			onClick : onClick
-		},{
-			label : "不结束于",
-			name:"NotEndWith",
-			onClick : onClick
-		}, {
+		},  
+		// {
+		// 	label : "等于(不分大小写)",
+		// 	name:"EqualsIgnoreCase",
+		// 	onClick : onClick
+		// },  {
+		// 	label : "开始于",
+		// 	name:"StartWith",
+		// 	onClick : onClick
+		// }, {
+		// 	label : "不开始于",
+		// 	name:"NotStartWith",
+		// 	onClick : onClick
+		// },{
+		// 	label : "结束于",
+		// 	name:"EndWith",
+		// 	onClick : onClick
+		// },{
+		// 	label : "不结束于",
+		// 	name:"NotEndWith",
+		// 	onClick : onClick
+		// }, 
+		{
 			label : "不等于",
 			name:"NotEquals",
 			onClick : onClick
-		}, {
-			label : "不等于(不分大小写)",
-			name:"NotEqualsIgnoreCase",
-			onClick : onClick
-		}, {
-			label : "在集合",
-			name:"In",
-			onClick : onClick
-		}, {
-			label : "不在集合",
-			name:"NotIn",
-			onClick : onClick
-		}, {
+		},
+		// {
+		// 	label : "不等于(不分大小写)",
+		// 	name:"NotEqualsIgnoreCase",
+		// 	onClick : onClick
+		// }, {
+		// 	label : "在集合",
+		// 	name:"In",
+		// 	onClick : onClick
+		// }, {
+		// 	label : "不在集合",
+		// 	name:"NotIn",
+		// 	onClick : onClick
+		// }, 
+		{
 			label : "为空",
 			name:"Null",
 			onClick : onClick
@@ -84,15 +88,17 @@ urule.ComparisonOperator=function(menuCallFun){
 			label : "不为空",
 			name:"NotNull",
 			onClick : onClick
-		}, {
-			label : "匹配正则表达式",
-			name:"Match",
-			onClick : onClick
-		}, {
-			label : "不匹配正则表达式",
-			name:"NotMatch",
-			onClick : onClick
-		}]
+		}, 
+		// {
+		// 	label : "匹配正则表达式",
+		// 	name:"Match",
+		// 	onClick : onClick
+		// }, {
+		// 	label : "不匹配正则表达式",
+		// 	name:"NotMatch",
+		// 	onClick : onClick
+		// }
+	]
 	});
 	this.container.click(function(e){
 		self.menu.show(e);

@@ -36,36 +36,40 @@ urule.InputType=function(endInfo,tip,functionProperty,rule){
 			label : "输入值",
 			name:"Input",
 			onClick : onClick
-		}, {
-			label : "选择变量",
-			name:"Variable",
-			onClick : onClick
-		}, {
-			label : "选择常量",
-			name:"Constant",
-			onClick : onClick
-		}, {
+		}, 
+		// {
+		// 	label : "选择变量",
+		// 	name:"Variable",
+		// 	onClick : onClick
+		// }, 
+		// {
+		// 	label : "选择常量",
+		// 	name:"Constant",
+		// 	onClick : onClick
+		// }, 
+		{
 			label : "选择参数",
 			name:"Parameter",
 			onClick : onClick
-		}]
+		}
+	]
 	});
-	if(this.rule){
-		self.menu.menuItems.push({
-			label:"选择命名变量",
-			name:"NamedReference",
-			onClick : onClick
-		});
-	}
-	self.menu.menuItems.push({
-		label : "选择方法",
-		name  : "Method",
-		onClick : onClick
-	}, {
-		label : "选择函数",
-		name  : "CommonFunction",
-		onClick : onClick
-	});
+	// if(this.rule){
+	// 	self.menu.menuItems.push({
+	// 		label:"选择命名变量",
+	// 		name:"NamedReference",
+	// 		onClick : onClick
+	// 	});
+	// }
+	// self.menu.menuItems.push({
+	// 	label : "选择方法",
+	// 	name  : "Method",
+	// 	onClick : onClick
+	// }, {
+	// 	label : "选择函数",
+	// 	name  : "CommonFunction",
+	// 	onClick : onClick
+	// });
 	this.label.click(function(e){
 		self.menu.show(e);
 	});
