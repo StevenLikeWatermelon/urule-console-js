@@ -118,9 +118,9 @@ urule.ParameterValue.prototype.setValue=function(data){
 		this.functionProperty.initMenu(data["variables"]);			
 	}
 	if(this.variableLabel){
-		URule.setDomContent(this.label,this.category+"."+this.variableLabel);
+		URule.setDomContent(this.label,'参数.' + this.category+"."+this.variableLabel);
 	}else{
-		URule.setDomContent(this.label,this.category);
+		URule.setDomContent(this.label,'参数.' + this.category);
 	}
 };
 urule.ParameterValue.prototype.initData=function(data){
